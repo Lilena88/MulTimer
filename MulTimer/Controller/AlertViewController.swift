@@ -17,12 +17,11 @@ class AlertViewController: UIViewController {
     var totalSecInMins = 0
     var totalSecInSecs = 0
     var totalTimeInSecs = 0
-
- 
+    
     @IBOutlet var alertView: UIView!
     @IBOutlet weak var timePickerView: UIPickerView!
     @IBOutlet weak var timerNameTextField: UITextField!
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         timePickerView.delegate = self
@@ -47,10 +46,8 @@ extension AlertViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        // до того как сбросить значение, нужно его использовать
         textField.resignFirstResponder()
     }
-
 }
 
 //MARK: - UIPicker
@@ -86,20 +83,18 @@ extension AlertViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch component {
         case 0:
-             totalSecInHours = hoursArray[row] * 3600
+            totalSecInHours = hoursArray[row] * 3600
         case 1:
-             totalSecInMins = minutesArray[row] * 60
+            totalSecInMins = minutesArray[row] * 60
         default:
-             totalSecInSecs = secondsArray[row]
+            totalSecInSecs = secondsArray[row]
         }
         totalTimeInSecs = totalSecInHours + totalSecInMins + totalSecInSecs
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
-    {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         pickerLabel.textColor = UIColor.black
-        
         switch component {
         case 0:
             pickerLabel.text = "      \(String(hoursArray[row]))"

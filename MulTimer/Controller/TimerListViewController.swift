@@ -12,7 +12,6 @@ import UserNotifications
 class TimerListViewController: UITableViewController {
     
     lazy var indexPathRowOfCurrentCell = 0
-    
     var timersArray = [Item]()
     let screenWidth = UIScreen.main.bounds.width - 30
     let screenHeight = UIScreen.main.bounds.height / 3
@@ -35,7 +34,6 @@ class TimerListViewController: UITableViewController {
         vc.totalSecInMins = 0
         vc.totalSecInSecs = 0
         vc.totalTimeInSecs = 0
-        
         //Create Alert
         let alert = UIAlertController(title: "NEW TIMER", message: "", preferredStyle: .actionSheet)
         let action = UIAlertAction(title: "START TIMER", style: .default) { (action) in
@@ -90,9 +88,8 @@ class TimerListViewController: UITableViewController {
         cell.timerModel.totalTime = Int(timersArray[indexPath.row].time)
         cell.durationSaveConstantTotalTime = Int(timersArray[indexPath.row].time)
         cell.delegate = self
-        
+        //Start counting timer after terminating of app
         cell.timerModel.startAppAfterTerminate(cell.durationSaveConstantTotalTime, cell.timerID, cell.timerName, cell.durationLabel)
-        
         //Start Timer when user add new timer in list
         let now = round(NSDate().timeIntervalSince1970)
         if cell.createdTime == now {

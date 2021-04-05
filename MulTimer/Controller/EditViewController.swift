@@ -40,16 +40,15 @@ class EditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         newNameTextField.delegate = self
         newNameTextField.text = nameForChange
         setTimePickerView.dataSource = self
         setTimePickerView.delegate = self
-        
+        //set picker with current timer values
         setTimePickerView.selectRow(arrayForPicker [0], inComponent: 0, animated: false)
         setTimePickerView.selectRow(arrayForPicker[1], inComponent: 1, animated: false)
         setTimePickerView.selectRow(arrayForPicker[2], inComponent: 2, animated: false)
-        
+        //total time in seconds
         totalSecInHRS = arrayForPicker[0] * 3600
         totalSecInMin = arrayForPicker[1] * 60
         totalSecInSec = arrayForPicker[2]
