@@ -158,7 +158,6 @@ extension TimerListViewController: TimerCellSegueDelegate {
 //MARK: - EditViewDelegate Protocol   -  Update/Change Timer from EditViewController
 
 extension TimerListViewController: EditViewDelegate {
-    
     func updateTimer(newName: String, newTime: Int) {
         timersArray[indexPathRowOfCurrentCell].nameOfTimer = newName
         timersArray[indexPathRowOfCurrentCell].time = Int64(newTime)
