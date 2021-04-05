@@ -25,7 +25,6 @@ class TimerListViewController: UITableViewController {
         tableView.register(UINib(nibName: "TimerCell", bundle: nil), forCellReuseIdentifier: "TimerCell")
     }
     
-    
     //MARK: - ADDING NEW TIMER
     
     @IBAction func addTimerButtonPressed(_ sender: UIBarButtonItem) {
