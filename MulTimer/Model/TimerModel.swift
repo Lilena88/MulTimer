@@ -56,6 +56,14 @@ class TimerModel {
         setNotificationTimer(timeInterval: TimeInterval(totalTime), name: timerName.text!, idNotification: String(idNotification))
     }
     
+    func pauseTimer(_ timerID: String){
+        stopTimer(timerID)
+        timerNotificationList.finishTime = 0
+        timerNotificationList.idNotification = ""
+        timerNotificationList.restTime = totalTime
+        defaults.set(timerNotificationList.encode(), forKey: timerID)
+    }
+    
     func timeToHoursMinSecFormat(time: Int) -> String {
         let hours = time / 3600 % 60
         let prodMinutes = time / 60 % 60

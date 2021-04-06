@@ -38,33 +38,29 @@ class TimerCell: UITableViewCell {
         super.setSelected(selected, animated: false)
         if timerModel.timer.isValid {
             isTimerRunning = true
-            startPauseButton.setTitle("Pause", for: .normal)
-            startPauseButton.setTitleColor(.systemOrange, for: .normal)
+            setPauseTitleOnButton()
         }
         if timerModel.restTime != 0 {
             timerModel.totalTime = timerModel.restTime
-            startPauseButton.setTitle("Resume", for: .normal)
-            startPauseButton.setTitleColor(.systemGreen, for: .normal)
+            setResumeTitleOnButton()
         }
     }
     
     //MARK: - Button Pressed Methods
     
     @IBAction func startPauseTimerButtonPressed(_ sender: UIButton) {
-        if isTimerRunning == false {
+        if timerModel.timer.isValid == false {
             isTimerRunning = true
+            durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
             timerModel.startTimer(durationSaveConstantTotalTime, timerID, timerName, durationLabel)
-            startPauseButton.setTitle("Pause", for: .normal)
-            startPauseButton.setTitleColor(.systemOrange, for: .normal)
+            setPauseTitleOnButton()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9 + .seconds(timerModel.totalTime)) {
+                self.setStartTitleOnButton()
+            }
         } else {
             isTimerRunning = false
-            timerModel.stopTimer(timerID)
-            timerModel.timerNotificationList.finishTime = 0
-            timerModel.timerNotificationList.idNotification = ""
-            timerModel.timerNotificationList.restTime = timerModel.totalTime
-            timerModel.defaults.set(timerModel.timerNotificationList.encode(), forKey: timerID)
-            startPauseButton.setTitle("Resume", for: .normal)
-            startPauseButton.setTitleColor(.systemGreen, for: .normal)
+            timerModel.pauseTimer(timerID)
+            setResumeTitleOnButton()
         }
     }
     
@@ -73,8 +69,7 @@ class TimerCell: UITableViewCell {
         timerModel.stopTimer(timerID)
         timerModel.totalTime = durationSaveConstantTotalTime
         durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
-        startPauseButton.setTitle("Start", for: .normal)
-        startPauseButton.setTitleColor(.systemGreen, for: .normal)
+        setStartTitleOnButton()
     }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
@@ -83,8 +78,7 @@ class TimerCell: UITableViewCell {
         timerModel.stopTimer(timerID)
         timerModel.totalTime = durationSaveConstantTotalTime
         durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
-        startPauseButton.setTitle("Start", for: .normal)
-        startPauseButton.setTitleColor(.systemGreen, for: .normal)
+        setStartTitleOnButton()
         // delegate - TimerListViewController perform segue from TimerListViewController to EditVC
         if let delegate = self.delegate {
             delegate.editButtonPressed()
@@ -95,8 +89,22 @@ class TimerCell: UITableViewCell {
         durationLabel.isUserInteractionEnabled = false
         durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
         isTimerRunning = false
+        setStartTitleOnButton()
+        AudioServicesRemoveSystemSoundCompletion(timerModel.systemSoundID)
+    }
+    
+    func setStartTitleOnButton() {
         startPauseButton.setTitle("Start", for: .normal)
         startPauseButton.setTitleColor(.systemGreen, for: .normal)
-        AudioServicesRemoveSystemSoundCompletion(timerModel.systemSoundID)
+    }
+    
+    func setPauseTitleOnButton() {
+        startPauseButton.setTitle("Pause", for: .normal)
+        startPauseButton.setTitleColor(.systemOrange, for: .normal)
+    }
+    
+    func setResumeTitleOnButton() {
+        startPauseButton.setTitle("Resume", for: .normal)
+        startPauseButton.setTitleColor(.systemGreen, for: .normal)
     }
 }
