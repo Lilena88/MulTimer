@@ -51,15 +51,12 @@ class TimerCell: UITableViewCell {
     @IBAction func startPauseTimerButtonPressed(_ sender: UIButton) {
         if timerModel.timer.isValid == false {
             isTimerRunning = true
-            durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
-            timerModel.startTimer(durationSaveConstantTotalTime, timerID, timerName, durationLabel)
+            durationLabel.text = timerModel.timeToHoursMinSecFormat(time: timerModel.totalTime)
+            timerModel.startTimer(durationSaveConstantTotalTime, timerID, timerName, durationLabel, sender)
             setPauseTitleOnButton()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9 + .seconds(timerModel.totalTime)) {
-                self.setStartTitleOnButton()
-            }
         } else {
             isTimerRunning = false
-            timerModel.pauseTimer(timerID)
+            timerModel.pauseTimer(timerID, durationLabel)
             setResumeTitleOnButton()
         }
     }

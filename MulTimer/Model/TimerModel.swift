@@ -29,7 +29,7 @@ class TimerModel {
         centerNotification.removePendingNotificationRequests(withIdentifiers: [idNotification])
     }
     
-    func startTimer(_ durationSaveConstantTotalTime: Int, _ timerID: String, _ timerName: UILabel, _ durationLabel: UILabel) {
+    func startTimer(_ durationSaveConstantTotalTime: Int, _ timerID: String, _ timerName: UILabel, _ durationLabel: UILabel, _ startPauseButton: UIButton) {
         let currentTime = Int((NSDate().timeIntervalSince1970))
         finishTime = currentTime + totalTime
         let id = Int.random(in: 0...4000000000)
@@ -50,17 +50,27 @@ class TimerModel {
                 AudioServicesPlaySystemSound(self.systemSoundID)
                 durationLabel.isUserInteractionEnabled = true
                 self.totalTime = durationSaveConstantTotalTime
+                startPauseButton.setTitle("Start", for: .normal)
+                startPauseButton.setTitleColor(.systemGreen, for: .normal)
             }
         })
         timer.tolerance = 0.1
         setNotificationTimer(timeInterval: TimeInterval(totalTime), name: timerName.text!, idNotification: String(idNotification))
     }
     
-    func pauseTimer(_ timerID: String){
+    func pauseTimer(_ timerID: String, _ durationLabel: UILabel){
         stopTimer(timerID)
         timerNotificationList.finishTime = 0
         timerNotificationList.idNotification = ""
-        timerNotificationList.restTime = totalTime
+        if totalTime == 0 {
+            timerNotificationList.restTime = 1
+            totalTime = 1
+            durationLabel.text = timeToHoursMinSecFormat(time: totalTime)
+        } else {
+            timerNotificationList.restTime = totalTime
+            restTime = totalTime
+            totalTime = restTime
+        }
         defaults.set(timerNotificationList.encode(), forKey: timerID)
     }
     

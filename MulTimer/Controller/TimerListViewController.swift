@@ -93,7 +93,7 @@ class TimerListViewController: UITableViewController {
         //Start Timer when user add new timer in list
         let now = round(NSDate().timeIntervalSince1970)
         if cell.createdTime == now {
-            cell.timerModel.startTimer(cell.durationSaveConstantTotalTime, cell.timerID, cell.timerName, cell.durationLabel)
+            cell.timerModel.startTimer(cell.durationSaveConstantTotalTime, cell.timerID, cell.timerName, cell.durationLabel, cell.startPauseButton)
         } else {
             print("Not new timer")
         }
