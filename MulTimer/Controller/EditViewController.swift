@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 protocol EditViewDelegate {
-    func updateTimer(newName: String, newTime: Int)
+    func updateTimer(newName: String, totalTime: Int, new: Bool)
 }
 
 class EditViewController: UIViewController {
@@ -17,8 +17,9 @@ class EditViewController: UIViewController {
     var delegate: EditViewDelegate?
     
     let contextEdit = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var totalTimeGotten: Int = 0
+    var totalTime: Int = 0
     var nameForChange: String = ""
+    var new: Bool = false
     
     private var totalSecInHRS = 0
     private var totalSecInMin = 0
@@ -26,9 +27,9 @@ class EditViewController: UIViewController {
     
     var arrayForPicker: [Int] {
         get {
-            let hours = totalTimeGotten / 3600 % 60
-            let minutes = totalTimeGotten / 60 % 60
-            let seconds = totalTimeGotten % 60
+            let hours = totalTime / 3600 % 60
+            let minutes = totalTime / 60 % 60
+            let seconds = totalTime % 60
             return [hours, minutes, seconds]
         }
     }
@@ -55,6 +56,8 @@ class EditViewController: UIViewController {
         
         saveButton.layer.cornerRadius = 5
         cancelButton.layer.cornerRadius = 5
+        
+        newNameTextField.placeholder = "Add name"
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
@@ -68,8 +71,7 @@ class EditViewController: UIViewController {
         }
         //delegate - TimerListViewController updates Item(timer) in timersArray and saves in DataModel
         if let delegate = self.delegate {
-            totalTimeGotten = totalSecInHRS + totalSecInMin + totalSecInSec
-            delegate.updateTimer(newName: nameForChange, newTime: totalTimeGotten)
+            delegate.updateTimer(newName: nameForChange, totalTime: totalTime, new: new)
         }
         dismiss (animated: true, completion: nil)
     }
@@ -114,6 +116,7 @@ extension EditViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         default:
             totalSecInSec = pickerView.selectedRow(inComponent: 2)
         }
+        totalTime = totalSecInHRS + totalSecInMin + totalSecInSec
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

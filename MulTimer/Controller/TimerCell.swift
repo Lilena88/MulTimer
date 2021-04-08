@@ -73,6 +73,7 @@ class TimerCell: UITableViewCell {
         // stop timer
         isTimerRunning = false
         timerModel.stopTimer(timerID)
+        timerModel.restTime = 0
         timerModel.totalTime = durationSaveConstantTotalTime
         durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
         setStartTitleOnButton()

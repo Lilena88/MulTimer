@@ -27,51 +27,13 @@ class TimerListViewController: UITableViewController {
     //MARK: - ADDING NEW TIMER
     
     @IBAction func addTimerButtonPressed(_ sender: UIBarButtonItem) {
-        //Create new VC to put it into the actionSheet of alert
-        let vc = AlertViewController()
-        vc.preferredContentSize = CGSize(width: screenWidth, height: screenHeight)
-        vc.totalSecInHours = 0
-        vc.totalSecInMins = 0
-        vc.totalSecInSecs = 0
-        vc.totalTimeInSecs = 0
-        //Create Alert
-        let alert = UIAlertController(title: "NEW TIMER", message: "", preferredStyle: .actionSheet)
-        let action = UIAlertAction(title: "START TIMER", style: .default) { (action) in
-            if vc.totalTimeInSecs != 0 {
-                let newItem = Item(context: self.context)
-                if vc.timerNameTextField.text == nil || vc.timerNameTextField.text == ""{
-                    newItem.nameOfTimer = "Timer"
-                } else {
-                    newItem.nameOfTimer = vc.timerNameTextField.text
-                }
-                newItem.time = Int64(vc.totalTimeInSecs)
-                newItem.timerID = String(Int.random(in: 0...4000000000))
-                newItem.created = round(NSDate().timeIntervalSince1970)
-                self.timersArray.append(newItem)
-                self.saveItem()
-            }
-        }
-        let cancelAction = UIAlertAction(title: "CANCEL", style: .default) { (cancelAction) in
-            vc.dismiss(animated: true, completion: nil)
-            vc.timerNameTextField.resignFirstResponder()
-        }
-        alert.setValue(vc, forKey: "contentViewController")
-        alert.view.addSubview(vc.view)
-        alert.addAction(action)
-        alert.addAction(cancelAction)
-        // Constraints for actionSheet
-        let width: NSLayoutConstraint = NSLayoutConstraint(item: alert.view!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 350.0)
-        let height: NSLayoutConstraint = NSLayoutConstraint(item: alert.view!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 450.0)
-        alert.view.addConstraint(width)
-        alert.view.addConstraint(height)
-        self.present(alert, animated: true, completion: nil)
+        performSegue(withIdentifier: "addNewGoToEdit", sender: self)
     }
-    
     
     //MARK: - TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 90
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,7 +99,7 @@ class TimerListViewController: UITableViewController {
     }
 }
 
-//MARK: - TimerCellSegueDelegate Methods  -  Go to Edit Screen
+//MARK: - Segue to EditVC when editButton pressed in the cell
 
 extension TimerListViewController: TimerCellSegueDelegate {
     
@@ -149,7 +111,12 @@ extension TimerListViewController: TimerCellSegueDelegate {
         if segue.identifier == "goToEditScreen" {
             let destinationVC = segue.destination as! EditViewController
             destinationVC.nameForChange = timersArray[indexPathRowOfCurrentCell].nameOfTimer!
-            destinationVC.totalTimeGotten = Int(timersArray[indexPathRowOfCurrentCell].time)
+            destinationVC.totalTime = Int(timersArray[indexPathRowOfCurrentCell].time)
+            destinationVC.new = false
+            destinationVC.delegate = self
+        } else if segue.identifier == "addNewGoToEdit" {
+            let destinationVC = segue.destination as! EditViewController
+            destinationVC.new = true
             destinationVC.delegate = self
         }
     }
@@ -158,10 +125,23 @@ extension TimerListViewController: TimerCellSegueDelegate {
 //MARK: - EditViewDelegate Protocol   -  Update/Change Timer from EditViewController
 
 extension TimerListViewController: EditViewDelegate {
-    func updateTimer(newName: String, newTime: Int) {
-        timersArray[indexPathRowOfCurrentCell].nameOfTimer = newName
-        timersArray[indexPathRowOfCurrentCell].time = Int64(newTime)
-        saveItem()
-        tableView.reloadData()
+    func updateTimer(newName: String, totalTime: Int, new: Bool) {
+        if new {
+            if totalTime != 0 {
+                let newItem = Item(context: context)
+                newItem.nameOfTimer = newName
+                newItem.time = Int64(totalTime)
+                newItem.timerID = String(Int.random(in: 0...4000000000))
+                newItem.created = round(NSDate().timeIntervalSince1970)
+            }
+            saveItem()
+            loadItems()
+            tableView.reloadData()
+        } else {
+            timersArray[indexPathRowOfCurrentCell].nameOfTimer = newName
+                  timersArray[indexPathRowOfCurrentCell].time = Int64(totalTime)
+                  saveItem()
+                  tableView.reloadData()
+        }
     }
 }

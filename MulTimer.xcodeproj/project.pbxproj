@@ -19,8 +19,6 @@
 		85B0B0C025E946B700B17C03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B0B0BE25E946B700B17C03 /* LaunchScreen.storyboard */; };
 		85B0B0D125ED088E00B17C03 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B0B0CF25ED088E00B17C03 /* TimerCell.swift */; };
 		85B0B0D225ED088E00B17C03 /* TimerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B0B0D025ED088E00B17C03 /* TimerCell.xib */; };
-		85B5E71B260E1927008FC9CB /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B5E719260E1927008FC9CB /* AlertViewController.swift */; };
-		85B5E71C260E1927008FC9CB /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B5E71A260E1927008FC9CB /* AlertViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +36,6 @@
 		85B0B0C125E946B700B17C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85B0B0CF25ED088E00B17C03 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
 		85B0B0D025ED088E00B17C03 /* TimerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerCell.xib; sourceTree = "<group>"; };
-		85B5E719260E1927008FC9CB /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
-		85B5E71A260E1927008FC9CB /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +95,6 @@
 			children = (
 				85B0B0B725E946AD00B17C03 /* TimerListViewController.swift */,
 				85B0B0CF25ED088E00B17C03 /* TimerCell.swift */,
-				85B5E719260E1927008FC9CB /* AlertViewController.swift */,
 				85378E2B2608C29200FB6465 /* EditViewController.swift */,
 			);
 			path = Controller;
@@ -110,7 +105,6 @@
 			children = (
 				85B0B0B925E946AD00B17C03 /* Main.storyboard */,
 				85B0B0D025ED088E00B17C03 /* TimerCell.xib */,
-				85B5E71A260E1927008FC9CB /* AlertViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,7 +170,6 @@
 				85B0B0BD25E946B700B17C03 /* Assets.xcassets in Resources */,
 				85B0B0BB25E946AD00B17C03 /* Main.storyboard in Resources */,
 				85B0B0D225ED088E00B17C03 /* TimerCell.xib in Resources */,
-				85B5E71C260E1927008FC9CB /* AlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +184,6 @@
 				85B0B0B825E946AD00B17C03 /* TimerListViewController.swift in Sources */,
 				8574590925F67139002A0DC9 /* DataModel.xcdatamodeld in Sources */,
 				85B0B0B425E946AD00B17C03 /* AppDelegate.swift in Sources */,
-				85B5E71B260E1927008FC9CB /* AlertViewController.swift in Sources */,
 				85B0B0B625E946AD00B17C03 /* SceneDelegate.swift in Sources */,
 				85378E11260385B900FB6465 /* TimerNotificationList.swift in Sources */,
 				85B0B0D125ED088E00B17C03 /* TimerCell.swift in Sources */,

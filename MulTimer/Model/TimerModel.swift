@@ -41,12 +41,15 @@ class TimerModel {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
             let now = Int(NSDate().timeIntervalSince1970)
-            if now <= self.finishTime {
+            if now <= self.finishTime - 1 {
                 self.totalTime = self.finishTime - now
                 durationLabel.text = self.timeToHoursMinSecFormat(time: self.totalTime)
             } else {
                 self.stopTimer(timerID)
-                durationLabel.text = "Complete!"
+                durationLabel.text = self.timeToHoursMinSecFormat(time: 0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    durationLabel.text = "Complete!"
+                }
                 AudioServicesPlaySystemSound(self.systemSoundID)
                 durationLabel.isUserInteractionEnabled = true
                 self.totalTime = durationSaveConstantTotalTime
