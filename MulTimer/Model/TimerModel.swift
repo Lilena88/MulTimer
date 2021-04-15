@@ -23,6 +23,8 @@ class TimerModel {
     let defaults = UserDefaults.standard
     let systemSoundID: SystemSoundID = 1304
     
+    
+    
     func stopTimer(_ timerID: String) {
         timer.invalidate()
         defaults.removeObject(forKey: timerID)

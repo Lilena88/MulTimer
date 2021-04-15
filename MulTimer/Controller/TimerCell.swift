@@ -27,6 +27,7 @@ class TimerCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var startPauseButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +45,9 @@ class TimerCell: UITableViewCell {
             timerModel.totalTime = timerModel.restTime
             setResumeTitleOnButton()
         }
+        startPauseButton.layer.cornerRadius = 5
+        stopButton.layer.cornerRadius = 5
+        editButton.layer.cornerRadius = 5
     }
     
     //MARK: - Button Pressed Methods
@@ -84,11 +88,24 @@ class TimerCell: UITableViewCell {
     }
     
     @objc func durationLabelTapComplete() {
-        durationLabel.isUserInteractionEnabled = false
-        durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
-        isTimerRunning = false
-        setStartTitleOnButton()
-        AudioServicesRemoveSystemSoundCompletion(timerModel.systemSoundID)
+        if durationLabel.text == "Complete!"{
+            
+            durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
+            isTimerRunning = false
+            setStartTitleOnButton()
+            AudioServicesRemoveSystemSoundCompletion(timerModel.systemSoundID)
+        } else {
+            isTimerRunning = false
+            timerModel.stopTimer(timerID)
+            timerModel.restTime = 0
+            timerModel.totalTime = durationSaveConstantTotalTime
+            durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
+            setStartTitleOnButton()
+            // delegate - TimerListViewController perform segue from TimerListViewController to EditVC
+            if let delegate = self.delegate {
+                delegate.editButtonPressed()
+            }
+        }
     }
     
     func setStartTitleOnButton() {
@@ -99,6 +116,7 @@ class TimerCell: UITableViewCell {
     func setPauseTitleOnButton() {
         startPauseButton.setTitle("Pause", for: .normal)
         startPauseButton.setTitleColor(.systemOrange, for: .normal)
+        
     }
     
     func setResumeTitleOnButton() {

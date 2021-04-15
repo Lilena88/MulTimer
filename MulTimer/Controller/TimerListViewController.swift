@@ -122,7 +122,7 @@ extension TimerListViewController: TimerCellSegueDelegate {
     }
 }
 
-//MARK: - EditViewDelegate Protocol   -  Update/Change Timer from EditViewController
+//MARK: - EditViewDelegate Protocol   -  New/Update Timer from EditViewController
 
 extension TimerListViewController: EditViewDelegate {
     func updateTimer(newName: String, totalTime: Int, new: Bool) {
@@ -139,9 +139,9 @@ extension TimerListViewController: EditViewDelegate {
             tableView.reloadData()
         } else {
             timersArray[indexPathRowOfCurrentCell].nameOfTimer = newName
-                  timersArray[indexPathRowOfCurrentCell].time = Int64(totalTime)
-                  saveItem()
-                  tableView.reloadData()
+            timersArray[indexPathRowOfCurrentCell].time = Int64(totalTime)
+            saveItem()
+            tableView.reloadData()
         }
     }
 }

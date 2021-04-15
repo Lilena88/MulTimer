@@ -25,15 +25,15 @@
                                 <rect key="frame" x="10" y="10" width="392" height="82"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="9OW-4E-fXO" userLabel="VStack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="252" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="242" height="82"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcK-NF-fq8">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcK-NF-fq8">
                                                 <rect key="frame" x="0.0" y="0.0" width="80.5" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="CMS-2d-vg2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
-                                                <color key="textColor" red="0.33725490200000002" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoa-as-H8A">
@@ -43,19 +43,23 @@
                                                     <constraint firstAttribute="width" constant="140" id="6ga-cj-6Vf"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.33725490200000002" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K4x-Up-dCz" userLabel="Button Stack View">
-                                        <rect key="frame" x="242" y="31" width="150" height="20"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K4x-Up-dCz" userLabel="Button Stack View">
+                                        <rect key="frame" x="232" y="21" width="160" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWY-Er-fyj">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="20"/>
+                                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWY-Er-fyj">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="UPG-zb-oEv"/>
                                                     <constraint firstAttribute="width" constant="70" id="XQd-gM-ceQ"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <state key="normal" title="Start">
                                                     <color key="titleColor" systemColor="systemGreenColor"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -64,12 +68,13 @@
                                                     <action selector="startPauseTimerButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rLC-le-UGR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nK-wZ-csO">
-                                                <rect key="frame" x="90" y="0.0" width="20" height="20"/>
+                                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nK-wZ-csO">
+                                                <rect key="frame" x="80" y="0.0" width="35" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="LLS-xq-STd"/>
-                                                    <constraint firstAttribute="height" constant="20" id="vxh-FT-QR4"/>
+                                                    <constraint firstAttribute="width" constant="35" id="LLS-xq-STd"/>
+                                                    <constraint firstAttribute="height" constant="40" id="vxh-FT-QR4"/>
                                                 </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <imageReference key="image" image="stop.fill" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -78,14 +83,13 @@
                                                     <action selector="stopTimerButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rwY-2E-Ukp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-z5-LZQ">
-                                                <rect key="frame" x="130" y="0.0" width="20" height="20"/>
+                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-z5-LZQ">
+                                                <rect key="frame" x="125" y="0.0" width="35" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="i2m-oy-Vnk"/>
-                                                    <constraint firstAttribute="width" constant="20" id="mmm-RQ-ddE"/>
+                                                    <constraint firstAttribute="height" constant="40" id="i2m-oy-Vnk"/>
+                                                    <constraint firstAttribute="width" constant="35" id="mmm-RQ-ddE"/>
                                                 </constraints>
-                                                <state key="normal">
-                                                    <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large"/>
+                                                <state key="normal" image="square.and.pencil" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                                 </state>
                                                 <connections>
@@ -93,8 +97,15 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="cOH-D2-OTk"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="9OW-4E-fXO" firstAttribute="leading" secondItem="OTB-Oa-CDu" secondAttribute="leading" id="TbA-fh-xL2"/>
                                     <constraint firstAttribute="bottom" secondItem="9OW-4E-fXO" secondAttribute="bottom" id="WZa-Oa-f48"/>
@@ -103,8 +114,8 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.87450980392156863" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.33725490200000002" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="OTB-Oa-CDu" secondAttribute="bottom" constant="10" id="9f4-pK-5xT"/>
                             <constraint firstAttribute="trailing" secondItem="OTB-Oa-CDu" secondAttribute="trailing" constant="10" id="bj4-V9-MFh"/>
@@ -114,8 +125,8 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.98431372549019602" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
-                <color key="tintColor" red="0.48627450979999998" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="0pf-E6-Xmj" secondAttribute="bottom" id="BXb-ql-j7L"/>
                     <constraint firstItem="0pf-E6-Xmj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="N0k-rQ-Nb7"/>
@@ -124,11 +135,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" red="0.87450980392156863" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="durationLabel" destination="wcK-NF-fq8" id="xix-1e-P6i"/>
                 <outlet property="editButton" destination="IfF-z5-LZQ" id="0P9-Rk-qlx"/>
                 <outlet property="startPauseButton" destination="EWY-Er-fyj" id="A2i-8Q-rEf"/>
+                <outlet property="stopButton" destination="6nK-wZ-csO" id="fXc-6q-Til"/>
                 <outlet property="timerName" destination="Yoa-as-H8A" id="q0Z-2l-lIf"/>
             </connections>
             <point key="canvasLocation" x="-583" y="26"/>

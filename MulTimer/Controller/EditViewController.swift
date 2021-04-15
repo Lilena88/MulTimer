@@ -56,7 +56,11 @@ class EditViewController: UIViewController {
         
         saveButton.layer.cornerRadius = 5
         cancelButton.layer.cornerRadius = 5
-        
+        if new {
+            saveButton.setTitle("Start", for: .normal)
+        } else {
+            saveButton.setTitle("Save", for: .normal)
+        }
         newNameTextField.placeholder = "Add name"
     }
     
@@ -65,6 +69,10 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
+        saveTimer()
+    }
+    
+    func saveTimer() {
         newNameTextField.endEditing(true)
         if nameForChange == "" {
             nameForChange = "Timer"
@@ -121,7 +129,7 @@ extension EditViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        pickerLabel.textColor = UIColor.black
+        pickerLabel.textColor = UIColor.white
         switch component {
         case 0:
             pickerLabel.text = "        \(String((0...23).map {($0)}[row]))"
@@ -144,6 +152,8 @@ extension EditViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
+        saveTimer()//does the same that the save button pressed
+        return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
