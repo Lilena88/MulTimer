@@ -11,6 +11,7 @@
 		85378E11260385B900FB6465 /* TimerNotificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85378E10260385B900FB6465 /* TimerNotificationList.swift */; };
 		85378E2C2608C29300FB6465 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85378E2B2608C29200FB6465 /* EditViewController.swift */; };
 		8574590925F67139002A0DC9 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8574590725F67139002A0DC9 /* DataModel.xcdatamodeld */; };
+		857E72B6262EFF7900E1FE41 /* alarmSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 857E72B5262EFF7900E1FE41 /* alarmSound.wav */; };
 		85B0B0B425E946AD00B17C03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B0B0B325E946AD00B17C03 /* AppDelegate.swift */; };
 		85B0B0B625E946AD00B17C03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B0B0B525E946AD00B17C03 /* SceneDelegate.swift */; };
 		85B0B0B825E946AD00B17C03 /* TimerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B0B0B725E946AD00B17C03 /* TimerListViewController.swift */; };
@@ -26,6 +27,7 @@
 		85378E10260385B900FB6465 /* TimerNotificationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerNotificationList.swift; sourceTree = "<group>"; };
 		85378E2B2608C29200FB6465 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		8574590825F67139002A0DC9 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		857E72B5262EFF7900E1FE41 /* alarmSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarmSound.wav; sourceTree = "<group>"; };
 		85B0B0B025E946AD00B17C03 /* MulTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MulTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B0B0B325E946AD00B17C03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B0B0B525E946AD00B17C03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				85B0B0D425ED08A400B17C03 /* Controller */,
 				85B0B0D625ED08B400B17C03 /* View */,
 				85B0B0BC25E946B700B17C03 /* Assets.xcassets */,
+				857E72B5262EFF7900E1FE41 /* alarmSound.wav */,
 				85B0B0BE25E946B700B17C03 /* LaunchScreen.storyboard */,
 				85B0B0C125E946B700B17C03 /* Info.plist */,
 			);
@@ -169,6 +172,7 @@
 				85B0B0C025E946B700B17C03 /* LaunchScreen.storyboard in Resources */,
 				85B0B0BD25E946B700B17C03 /* Assets.xcassets in Resources */,
 				85B0B0BB25E946AD00B17C03 /* Main.storyboard in Resources */,
+				857E72B6262EFF7900E1FE41 /* alarmSound.wav in Resources */,
 				85B0B0D225ED088E00B17C03 /* TimerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,7 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.elenakim.MulTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -371,7 +375,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.elenakim.MulTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

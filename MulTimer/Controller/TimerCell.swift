@@ -71,6 +71,7 @@ class TimerCell: UITableViewCell {
         timerModel.totalTime = durationSaveConstantTotalTime
         durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
         setStartTitleOnButton()
+        timerModel.player?.stop()
     }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
@@ -93,7 +94,7 @@ class TimerCell: UITableViewCell {
             durationLabel.text = timerModel.timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
             isTimerRunning = false
             setStartTitleOnButton()
-            AudioServicesRemoveSystemSoundCompletion(timerModel.systemSoundID)
+            timerModel.player?.stop()
         } else {
             isTimerRunning = false
             timerModel.stopTimer(timerID)

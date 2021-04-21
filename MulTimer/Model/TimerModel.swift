@@ -21,9 +21,7 @@ class TimerModel {
     let contentNotification = UNMutableNotificationContent()
     let timerNotificationList = TimerNotificationList()
     let defaults = UserDefaults.standard
-    let systemSoundID: SystemSoundID = 1304
-    
-    
+    var player: AVAudioPlayer?
     
     func stopTimer(_ timerID: String) {
         timer.invalidate()
@@ -52,7 +50,7 @@ class TimerModel {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     durationLabel.text = "Complete!"
                 }
-                AudioServicesPlaySystemSound(self.systemSoundID)
+                self.playSound()
                 durationLabel.isUserInteractionEnabled = true
                 self.totalTime = durationSaveConstantTotalTime
                 startPauseButton.setTitle("Start", for: .normal)
@@ -92,8 +90,9 @@ class TimerModel {
     }
     
     func setNotificationTimer (timeInterval: TimeInterval, name: String, idNotification: String ) {
+        let soundName = UNNotificationSoundName("alarmSound.wav")
         contentNotification.body = name
-        contentNotification.sound = .default
+        contentNotification.sound = UNNotificationSound(named: soundName)
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         let request = UNNotificationRequest(identifier: idNotification, content: contentNotification, trigger: trigger)
@@ -142,5 +141,11 @@ class TimerModel {
             print("NotificationList is empty for cell")
             durationLabel.text = timeToHoursMinSecFormat(time: durationSaveConstantTotalTime)
         }
+    }
+    
+    func playSound() {
+        let url = Bundle.main.url(forResource: "alarmSound", withExtension: "wav")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player?.play()
     }
 }
